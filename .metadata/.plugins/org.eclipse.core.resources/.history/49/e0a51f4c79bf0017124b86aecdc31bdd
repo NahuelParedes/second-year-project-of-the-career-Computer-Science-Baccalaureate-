@@ -1,0 +1,104 @@
+package security_master;
+import java.util.ArrayList;
+
+public class ContratacionDeServicios {
+
+	private int NumeroServicio = 0;
+	private int InicioServicio = 0;
+	private int FinalServicio = 0;
+	private int NumeroCliente = 0;
+	private ArrayList<Empleado> listaEmpleadosServicio;
+	private String tipoDeServicio;
+
+	
+	public ContratacionDeServicios(int NumeroServicio, int InicioServicio, int FinalServicio, int NumeroCliente,
+			ArrayList<Empleado> listaEmpleadosServicio) {
+
+		this.NumeroServicio = NumeroServicio;
+		this.InicioServicio = InicioServicio;
+		this.FinalServicio = FinalServicio;
+		this.NumeroCliente = NumeroCliente;
+		this.listaEmpleadosServicio = listaEmpleadosServicio;
+	}
+
+	public String toString() {
+		return "ContratacionDeServicios{ NumeroServicio=" + NumeroServicio + ", InicioServicio=" + InicioServicio
+				+ ", FinalServicio=" + FinalServicio + ", NumeroCliente=" + NumeroCliente + "tipoDeServicio= "+ tipoDeServicio+ '}';
+	}
+
+	public ArrayList<Empleado> getListaEmpleado() {
+		return listaEmpleadosServicio;
+	}
+
+	public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
+		this.listaEmpleadosServicio = listaEmpleado;
+	}
+
+	public void agregarEmpleado(Empleado unEmpleado) {
+		getListaEmpleado().add(unEmpleado);
+
+	}
+
+	public int getNumeroServicio() {
+
+		return NumeroServicio;
+
+	}
+
+	public void setNumeroServicio(int NumeroServicio) {
+
+		this.NumeroServicio = NumeroServicio;
+
+	}
+
+	public int getInicioServicio() {
+
+		return InicioServicio;
+
+	}
+
+	public void setInicioServicio(int InicioServicio) {
+
+		this.InicioServicio = InicioServicio;
+
+	}
+
+	public int getFinalServicio() {
+
+		return FinalServicio;
+
+	}
+
+	public void setFinalServicio(int FinalServicio) {
+
+		this.FinalServicio = FinalServicio;
+
+	}
+
+	public int getNumeroCliente() {
+
+		return NumeroCliente;
+
+	}
+
+	public void setNumeroCliente(int NumeroCliente) {
+
+		this.NumeroCliente = NumeroCliente;
+
+	}
+	public String gettipoDeServicio() {
+
+		return tipoDeServicio;
+
+	}
+
+	public void settipoDeServicio(String tipoDeServicio) {
+
+		this.tipoDeServicio = tipoDeServicio;
+}
+	
+	
+}
+	
+	
+	

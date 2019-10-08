@@ -1,0 +1,101 @@
+package security_master;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.Font;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class Gestor_Operador extends JFrame {
+
+	private JPanel contentPane;
+
+	
+	public Gestor_Operador() {
+		setTitle("Operador");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(600, 300, 472, 303);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 377, 289);
+		contentPane.add(panel);
+		
+		JButton btnAltaEmpleado = new JButton("Alta Empleado");
+		btnAltaEmpleado.setBounds(134, 56, 167, 23);
+		btnAltaEmpleado.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				Alta_Empleado Alta_Em = new Alta_Empleado();
+				Alta_Em.setVisible(true);
+				dispose();
+			}
+		});
+		panel.setLayout(null);
+		panel.add(btnAltaEmpleado);
+		
+		JButton btnConsultas = new JButton("Consultas");
+		btnConsultas.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			}
+		});
+		btnConsultas.setBounds(134, 122, 167, 23);
+		panel.add(btnConsultas);
+		
+		JLabel lblGestionDeEmpleados = new JLabel("Gestion de Empleados");
+		lblGestionDeEmpleados.setBounds(88, 0, 238, 34);
+		lblGestionDeEmpleados.setFont(new Font("Tahoma", Font.BOLD, 20));
+		panel.add(lblGestionDeEmpleados);
+		
+		JButton btnAtras = new JButton("Atras");
+		btnAtras.setBounds(10, 197, 76, 23);
+		panel.add(btnAtras);
+		
+		JButton btnContratacionServicio = new JButton("Contratacion Servicio");
+		btnContratacionServicio.setBounds(134, 90, 167, 23);
+		panel.add(btnContratacionServicio);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.setBounds(338, 197, 76, 23);
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				System.exit(0);
+			}
+		});
+		panel.add(btnSalir);
+	}
+		
+	}
+
+

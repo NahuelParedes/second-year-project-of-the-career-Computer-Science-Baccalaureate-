@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="security_master/src"/>
+	<classpathentry kind="lib" path="security_master/Drivers/rs2xml.jar"/>
+	<classpathentry kind="lib" path="security_master/Drivers/sqljdbc4.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="security_master/bin"/>
+</classpath>

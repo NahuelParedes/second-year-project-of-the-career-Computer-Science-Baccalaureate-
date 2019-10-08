@@ -1,0 +1,277 @@
+package security_master;
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import Conexiones.Conexion2;
+
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+
+public class Alta_Empleado extends JFrame {
+
+	private JPanel contentPane;
+	private final JPanel panel = new JPanel();
+	private JTextField textFieldNombre;
+	private JTextField textFieldEdad;
+	private JTextField textFieldCI;
+	private JTextField textFieldDomicilio;
+	private JTextField textFieldEmail;
+
+	private ButtonGroup botones=new ButtonGroup();
+	private ButtonGroup botones1=new ButtonGroup();
+	private ButtonGroup botones2=new ButtonGroup();
+	private JTextField textFieldApellido;
+	
+	public Alta_Empleado() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(600, 200, 700, 700);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		panel.setBounds(0, 0, 684, 662);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblIngresoYModificacion = new JLabel("Alta Empleado");
+		lblIngresoYModificacion.setBounds(282, 11, 173, 19);
+		lblIngresoYModificacion.setFont(new Font("Tahoma", Font.BOLD, 18));
+		panel.add(lblIngresoYModificacion);
+		
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setBounds(104, 60, 73, 19);
+		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(lblNombre);
+		
+		JLabel lblEdad = new JLabel("Edad:");
+		lblEdad.setBounds(104, 142, 46, 14);
+		lblEdad.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(lblEdad);
+		
+		JLabel lblCi = new JLabel("CI:");
+		lblCi.setBounds(104, 182, 46, 14);
+		lblCi.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(lblCi);
+		
+		JLabel lblDomicilio = new JLabel("Domicilio:");
+		lblDomicilio.setBounds(104, 222, 73, 14);
+		lblDomicilio.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(lblDomicilio);
+		
+		JLabel lblEmail = new JLabel("Email");
+		lblEmail.setBounds(104, 260, 73, 14);
+		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(lblEmail);
+		
+		JLabel lblPorteDeArmas = new JLabel("Porte de Armas:");
+		lblPorteDeArmas.setBounds(79, 415, 122, 14);
+		lblPorteDeArmas.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(lblPorteDeArmas);
+		
+		
+		JLabel lblLibreta = new JLabel("Libreta de Conducir:");
+		lblLibreta.setBounds(85, 469, 140, 14);
+		lblLibreta.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(lblLibreta);
+		
+		JLabel lblDefensaPersonal = new JLabel("Defensa Personal:");
+		lblDefensaPersonal.setBounds(60, 325, 140, 14);
+		lblDefensaPersonal.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(lblDefensaPersonal);
+		
+		JLabel lblHorarioFulltime = new JLabel("Horario fulltime:");
+		lblHorarioFulltime.setBounds(97, 518, 104, 14);
+		lblHorarioFulltime.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		panel.add(lblHorarioFulltime);
+		
+		textFieldNombre = new JTextField();
+		textFieldNombre.setBounds(187, 61, 173, 20);
+		textFieldNombre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		panel.add(textFieldNombre);
+		textFieldNombre.setColumns(10);
+		
+		textFieldEdad = new JTextField();
+		textFieldEdad.setBounds(187, 141, 173, 20);
+		panel.add(textFieldEdad);
+		textFieldEdad.setColumns(10);
+		
+		textFieldCI = new JTextField();
+		textFieldCI.setBounds(187, 181, 173, 20);
+		panel.add(textFieldCI);
+		textFieldCI.setColumns(10);
+		
+		textFieldDomicilio = new JTextField();
+		textFieldDomicilio.setBounds(187, 221, 173, 20);
+		panel.add(textFieldDomicilio);
+		textFieldDomicilio.setColumns(10);
+		
+		textFieldEmail = new JTextField();
+		textFieldEmail.setBounds(187, 259, 173, 20);
+		panel.add(textFieldEmail);
+		textFieldEmail.setColumns(10);
+		
+		JRadioButton ArmasSi = new JRadioButton("Si");
+		ArmasSi.setBounds(234, 413, 46, 23);
+		panel.add(ArmasSi);
+		
+		JRadioButton ArmasNo = new JRadioButton("No");
+		ArmasNo.setBounds(328, 413, 51, 23);
+		panel.add(ArmasNo);
+		
+		botones.add(ArmasSi);    // Grupo de botones
+		botones.add(ArmasNo);
+		
+		JRadioButton LibretaSi = new JRadioButton("Si");
+		LibretaSi.setBounds(234, 467, 46, 23);
+		panel.add(LibretaSi);
+		
+		JRadioButton LibretaNo = new JRadioButton("No");
+		LibretaNo.setBounds(328, 460, 46, 23);
+		panel.add(LibretaNo);
+		
+		botones1.add(LibretaSi);   // Grupo de botones
+		botones1.add(LibretaNo);
+		
+		JRadioButton FullTimeSi = new JRadioButton("Si");
+		FullTimeSi.setBounds(247, 516, 46, 23);
+		panel.add(FullTimeSi);
+		
+		JRadioButton FullTimeNo = new JRadioButton("No");
+		FullTimeNo.setBounds(348, 516, 46, 23);
+		panel.add(FullTimeNo);
+		
+		botones2.add(FullTimeSi);     // Grupo de botones
+		botones2.add(FullTimeNo);
+		
+		JRadioButton rdbtnKarate = new JRadioButton("Karate");
+		rdbtnKarate.setBounds(187, 323, 93, 23);
+		panel.add(rdbtnKarate);
+		
+		JRadioButton rdbtnAikido = new JRadioButton("Aikido");
+		rdbtnAikido.setBounds(187, 357, 93, 23);
+		panel.add(rdbtnAikido);
+		
+		JRadioButton rdbtnJiujitsu = new JRadioButton("Jiu-Jitsu");
+		rdbtnJiujitsu.setBounds(282, 323, 92, 23);
+		panel.add(rdbtnJiujitsu);
+		
+		JRadioButton rdbtnBoxeo = new JRadioButton("Boxeo");
+		rdbtnBoxeo.setBounds(376, 362, 93, 23);
+		panel.add(rdbtnBoxeo);
+		
+		JRadioButton rdbtnKickBoxing = new JRadioButton("Kick Boxing");
+		rdbtnKickBoxing.setBounds(376, 323, 122, 23);
+		panel.add(rdbtnKickBoxing);
+		
+		JRadioButton rdbtnWingChun = new JRadioButton("Wing Chun");
+		rdbtnWingChun.setBounds(282, 357, 93, 23);
+		panel.add(rdbtnWingChun);
+		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(85, 614, 89, 23);
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+				
+				Conexion2 llamada=new Conexion2();
+
+				   
+	             llamada.getConnection();
+	       
+	 
+				
+					
+				Connection pruebaCn=Conexion2.getConnection();
+				
+				
+				if (pruebaCn!=null) {
+					
+					
+					JOptionPane.showMessageDialog(null, "Conexion exitosa!");
+					JOptionPane.showMessageDialog(null, pruebaCn);
+					java.sql.Statement stm = null;
+					try {
+						stm = pruebaCn.createStatement();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					try{
+                    
+					
+                    String query="insert into Empleados (Nombre,apellido,Calle,email) values('?','?','?','?')";
+                    
+                    PreparedStatement pst=pruebaCn.prepareStatement(query);
+                    
+                    pst.setString(1, textFieldNombre.getText());
+                    pst.setString(2, textFieldApellido.getText());
+                    pst.setString(3, textFieldDomicilio.getText());
+                    pst.setString(4, textFieldEmail.getText());
+                    
+                    pst.execute();
+                    
+                    JOptionPane.showMessageDialog(null, "Data Saved successfully");
+                    
+                    pst.close();
+                    
+                    
+                } catch(Exception e1) {
+                
+                	e1.printStackTrace();     
+				
+		
+				
+				}
+				
+				
+				
+			}
+			}
+		});
+		panel.add(btnGuardar);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.setBounds(508, 614, 73, 23);
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				System.exit(0);
+			}
+		});
+		panel.add(btnSalir);
+		
+		JLabel lblApellido = new JLabel("Apellido");
+		lblApellido.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		lblApellido.setBounds(104, 104, 55, 14);
+		panel.add(lblApellido);
+		
+		textFieldApellido = new JTextField();
+		textFieldApellido.setBounds(187, 103, 173, 20);
+		panel.add(textFieldApellido);
+		textFieldApellido.setColumns(10);
+	}
+}

@@ -1,0 +1,129 @@
+package security_master;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+import java.awt.HeadlessException;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import Conexiones.Conexion2;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+
+import java.awt.event.ActionEvent;
+
+
+
+import java.sql.*;
+import javax.swing.*;
+
+
+public class Consultas_Otro extends JFrame {
+
+	private JPanel contentPane;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Consultas_Otro frame = new Consultas_Otro();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Consultas_Otro() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 688, 380);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton btnVerTodosLos = new JButton("VER TODOS LOS EMPLEADOS");
+		btnVerTodosLos.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0){
+				
+       Conexion2 llamada=new Conexion2();
+
+   
+             llamada.getConnection();
+       
+ 
+			
+				
+			Connection pruebaCn=Conexion2.getConnection();
+			
+			
+			if (pruebaCn!=null) {
+				
+				
+				JOptionPane.showMessageDialog(null, "Conexion exitosa!");
+				JOptionPane.showMessageDialog(null, pruebaCn);
+				java.sql.Statement stm = null;
+				try {
+					stm = pruebaCn.createStatement();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				ResultSet rst = null;
+				try {
+					rst = stm.executeQuery("select * from empleados");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				
+				
+				try {
+					while (rst.next()) {
+						
+
+						JOptionPane.showMessageDialog(null,"\nNombre :"+rst.getString(2)+
+								                            "\nCedula de identidad: "+ rst.getInt(1)+
+					                                        "\nEdad:"+rst.getInt(3)+ 
+					                                        
+					                                        "\nSexo:"+rst.getString(7) );
+						
+					}
+				} catch (HeadlessException | SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			} else {
+				JOptionPane.showMessageDialog(null, "Error en la conexion...");
+			}
+			
+			
+	
+	
+
+				
+			}
+		});
+		btnVerTodosLos.setBounds(83, 71, 470, 29);
+		contentPane.add(btnVerTodosLos);
+		
+		JLabel lblBienvenidoALas = new JLabel("Bienvenido a las consultas");
+		lblBienvenidoALas.setBounds(249, 11, 283, 14);
+		contentPane.add(lblBienvenidoALas);
+	}
+}

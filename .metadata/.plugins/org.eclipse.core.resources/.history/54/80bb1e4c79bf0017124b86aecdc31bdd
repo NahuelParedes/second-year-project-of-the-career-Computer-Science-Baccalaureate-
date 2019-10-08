@@ -1,0 +1,30 @@
+package security_master;
+
+public class Admi_Contraseña {
+
+	public Admi_Contraseña() {
+		
+		
+	}
+	
+	String Usuario= "";
+	String Contraseña= "";
+	
+	public int Pass() {
+		
+		Usuario = Boton_Admin.textFieldUsuario.getText();
+		Contraseña= Boton_Admin.passwordFieldContraseña.getText();
+		
+		if (Usuario.equals("m") && Contraseña.equals("m")){
+	
+			return 1;
+		}
+		
+		else {
+			
+			return 0;
+		}
+		
+	}
+	
+}

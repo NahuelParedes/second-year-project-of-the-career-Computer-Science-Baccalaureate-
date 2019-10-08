@@ -1,0 +1,68 @@
+package Conexiones;
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.naming.spi.DirStateFactory.Result;
+import javax.swing.JOptionPane;
+
+
+
+public class Conexion2 {
+
+	private static Connection cn;
+	public static  Connection getConnection(){
+	
+try{
+	Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+	cn=DriverManager.getConnection("jdbc:sqlserver://Nahuel-PC:1432;databaseName=Proyecto", "Yasuo", "123");
+	
+	
+	
+	
+} catch (Exception e){
+	
+	cn=null;
+}
+
+
+return cn;
+		
+	
+	}
+	
+	public static void main(String[] args) throws SQLException{
+		
+	Connection pruebaCn=Conexion2.getConnection();
+	
+	
+	if (pruebaCn!=null) {
+		
+		
+		JOptionPane.showMessageDialog(null, "Conexion exitosa!");
+		JOptionPane.showMessageDialog(null, pruebaCn);
+		java.sql.Statement stm=pruebaCn.createStatement();
+		ResultSet rst=stm.executeQuery("select * from empleados");
+		
+		
+		
+		while (rst.next()) {
+			
+
+			JOptionPane.showMessageDialog(null,"\nNombre :"+rst.getString(2)+
+					                            "\nCedula de identidad: "+ rst.getInt(1)+
+		                                        "\nEdad:"+rst.getInt(3)+ 
+		                                        
+		                                        "\nSexo:"+rst.getString(7) );
+			
+		}
+		
+	} else {
+		JOptionPane.showMessageDialog(null, "Error en la conexion...");
+	}
+	
+	}
+	
+}

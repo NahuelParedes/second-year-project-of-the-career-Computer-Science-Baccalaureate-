@@ -1,0 +1,156 @@
+package security_master;
+import java.util.ArrayList;
+
+public class Sistema {
+
+	private ArrayList<Empleado> listaEmpleado;
+	
+	
+	public ArrayList<Empleado> getListaEmpleado() {
+		return listaEmpleado;
+	}
+
+	public void setListaEmpleado(ArrayList<Empleado> listaEmpleado) {
+		this.listaEmpleado = listaEmpleado;
+	}
+
+	public void agregarEmpleado(Empleado unEmpleado) {
+		getListaEmpleado().add(unEmpleado);
+
+	}
+	
+	
+//Agrego empleado
+	public void agregarEmpleado(String nombre, int edad, int cedula,String direccion, int telefono, boolean LibretaConducir, boolean PorteArma,
+    		 boolean HorarioFulltime, String Categoria,ArrayList<String> listaDefensaPersonal,
+    		ArrayList<Empleado> performance,ContratacionDeServicios servicio )
+	
+	
+	    {
+    	
+		
+		    
+     Empleado unEmpleado = new Empleado(nombre, edad,  cedula, 
+        		direccion,  telefono,  LibretaConducir,  PorteArma,HorarioFulltime, Categoria, listaDefensaPersonal, performance,servicio );
+        
+        
+        getListaEmpleado().add(unEmpleado);   // Simplifica, este metodo lo que hace es agregar el empleado creado y guardarlo
+        //guarda todos los datos, nombre m edad etc
+    }
+	
+	
+//Seteo categoria de empleados
+	public void categoriaEmpleado(Empleado unEmpleado) {
+
+		String categoria = "";
+
+		if (unEmpleado.getPorteArma() == true && unEmpleado.getLibretaConducir() == true
+				&& unEmpleado.getHorarioFullTime() == true)
+
+		{
+			categoria = "VIP";
+		}
+
+		else if (unEmpleado.getPorteArma() == false && unEmpleado.getLibretaConducir() == true
+				&& unEmpleado.getHorarioFullTime() == true)
+
+		{
+			categoria = "Alto A";
+		}
+
+		else if (unEmpleado.getPorteArma() == true && unEmpleado.getLibretaConducir() == false
+				&& unEmpleado.getHorarioFullTime() == true)
+
+		{
+			categoria = "Alto B";
+		}
+
+		else if (unEmpleado.getPorteArma() == true && unEmpleado.getLibretaConducir() == true
+				&& unEmpleado.getHorarioFullTime() == false)
+
+		{
+			categoria = "Alto C";
+		}
+
+		else if (unEmpleado.getPorteArma() == false && unEmpleado.getLibretaConducir() == false
+				&& unEmpleado.getHorarioFullTime() == true)
+
+		{
+			categoria = "Medio A";
+		}
+
+		else if (unEmpleado.getPorteArma() == false && unEmpleado.getLibretaConducir() == true
+				&& unEmpleado.getHorarioFullTime() == false)
+
+		{
+			categoria = "Medio B";
+		}
+
+		else if (unEmpleado.getPorteArma() == true && unEmpleado.getLibretaConducir() == false
+				&& unEmpleado.getHorarioFullTime() == false)
+
+		{
+			categoria = "Medio C";
+		}
+
+		else if (unEmpleado.getPorteArma() == false && unEmpleado.getLibretaConducir() == false
+				&& unEmpleado.getHorarioFullTime() == false)
+
+		{
+			categoria = "Bajo";
+		}
+		unEmpleado.setCategoria(categoria); // permite que la categoria se vaya  // Simplifica
+											// seteando en el empleado(guarda)
+	}
+	
+	
+    //METODO Contratacion de Servicios  
+	public void contratacionDeServicios(int numeroServicio,int fechaInicio, int fechaFinal,int numeroDeCliente){
+		
+		
+		ArrayList<Empleado> listaEmpleadosServicio = new ArrayList();
+		String tipoDeServicio = "";
+		ContratacionDeServicios unServicio = new ContratacionDeServicios(0,0,0,0,listaEmpleadosServicio);
+		
+		// Setean las variables
+		unServicio.setNumeroServicio(numeroServicio);
+		unServicio.setInicioServicio(fechaInicio);
+		unServicio.setFinalServicio(fechaFinal);
+		unServicio.setNumeroCliente(numeroDeCliente);
+		
+		
+		//Metodo para que me devuela la lista de empleados para el servicio
+		
+		listaEmpleadosServicio = crearListaEmpleadosServicio();
+		unServicio.setListaEmpleado(listaEmpleadosServicio);
+		
+		
+		
+		//Setea la categoria del servicio
+		
+		tipoDeServicio = tipoServicio(listaEmpleado);
+		unServicio.settipoDeServicio(tipoDeServicio);
+	}
+	
+	// listaEmpleadosServicio
+	public ArrayList<Empleado> crearListaEmpleadosServicio(){
+		   ArrayList<Empleado> listaEmpleadosServicio = new ArrayList();
+		
+		
+	
+		//recorre la lista de empleados y selecciona los que pueden trabajar
+		// la lista era de 100 empleados en total y te devuelve 5 que son los que trabajan
+		return listaEmpleadosServicio;
+	}
+	
+	
+	//Categoria de servicio
+	public String tipoServicio(ArrayList<Empleado> empleados){
+		String tipo = "";
+		
+		return tipo;
+	}
+	
+}
+
+

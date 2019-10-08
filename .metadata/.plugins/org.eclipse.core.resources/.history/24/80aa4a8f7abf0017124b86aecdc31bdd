@@ -1,0 +1,10 @@
+package security_master;
+
+public class ConexionBDI {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

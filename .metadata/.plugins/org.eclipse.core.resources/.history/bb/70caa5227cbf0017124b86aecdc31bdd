@@ -1,0 +1,46 @@
+package security_master;
+
+import java.sql.*;
+
+public class ConexionBDI {
+
+	/* ******************************************************** *
+	 * Función para realizar una conexion con la base de datos. *
+	 * Return Type: Connection o NULL en caso de error          *
+	 * ******************************************************** */
+	public static Connection conecta(String dbName, String serverip, String serverport, String databaseUserName, String databasePassword) {
+
+        Connection conn = null;
+        String url = "jdbc:sqlserver://"+serverip+"\\SQLEXPRESS;databaseName="+dbName+""; //:"+serverport+"
+        String driver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        
+        try {
+            Class.forName(driver).newInstance();
+            conn = DriverManager.getConnection(url, databaseUserName, databasePassword);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return conn;
+    }
+
+	/* ****************************************************** *
+	 * Función para realizar una consulta a la base de datos. *
+	 * Return Type: ResultSet o NULL en caso de error         *
+	 * ****************************************************** */
+	public static ResultSet consulta(Connection conn, String query) {
+		
+		Statement stmt = null;
+        ResultSet result = null;
+        
+        try {
+        	stmt = conn.createStatement();
+        	result = stmt.executeQuery(query);
+        } catch (SQLException e) {
+        	System.out.println("ERROR SQL: " + e);
+        }
+        
+        return result;
+	}
+	
+}

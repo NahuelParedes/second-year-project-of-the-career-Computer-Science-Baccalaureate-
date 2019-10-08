@@ -1,0 +1,158 @@
+package security_master;
+import java.util.ArrayList;
+
+public class Empleado {
+
+	private String nombre;
+	private int edad;
+	private int cedula;
+	private String direccion;
+	private int telefono;
+	private boolean LibretaConducir;
+	private boolean PorteArma;
+	private boolean HorarioFulltime;
+	
+	private String Categoria;
+	
+	private ArrayList<String> listaDefensaPersonal;
+	private ArrayList<Empleado> performance;
+	
+	private ContratacionDeServicios servicio;
+	
+	
+	public Empleado(String nombre, int edad, int cedula, String direccion, int telefono, boolean LibretaConducir,
+			boolean PorteArma, boolean HorarioFulltime, String Categoria, ArrayList<String> listaDefensaPersonal,
+			ArrayList<Empleado> performance,ContratacionDeServicios servicio) {
+
+		this.nombre = nombre;
+		this.edad = edad;
+		this.cedula = cedula;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.LibretaConducir = LibretaConducir;
+		this.PorteArma = PorteArma;
+		this.HorarioFulltime = HorarioFulltime;
+		this.Categoria = Categoria;
+		this.listaDefensaPersonal = listaDefensaPersonal;
+		this.performance = performance;
+		this.servicio = servicio;
+	}
+
+   
+    public String toString() {
+        return "Cliente{"+"nombre="+nombre+", edad="+edad+", cedula="+cedula+", direccion="+direccion+","
+        		+ "=, telefono=" + telefono + ", LibretaConducir=" + LibretaConducir + ", PorteArma="+ PorteArma
+        		+ ", HorarioFulltime="+HorarioFulltime+ "Categoria="+Categoria+'}';
+    }
+    
+    public ArrayList<String> getlistaDefensaPersonal() {
+        return listaDefensaPersonal;
+    }
+    
+	public void setListaDefensaPersonal(ArrayList<String> listaDefensaPersonal) {
+		this.listaDefensaPersonal = listaDefensaPersonal;
+	}
+
+	public void agregarDefensaPersonal(String unDefensaPersonal) {
+		getlistaDefensaPersonal().add(unDefensaPersonal);
+
+	}
+	
+	public ArrayList<Empleado>getperformance() {
+        return performance;
+        
+	}   
+        
+	public void setperformance(ArrayList<Empleado> performance) {
+		this.performance = performance;
+	}
+
+	public void agregarperformance(Empleado unperformance) {
+		getperformance().add(unperformance);
+
+	}
+   
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+    
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+    
+    public int getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(int cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setLibretaConducir(boolean LibretaConducir) {
+        this.LibretaConducir = LibretaConducir;
+    }
+    public boolean getLibretaConducir(){
+    	return LibretaConducir;
+    	
+    }
+	
+    public void setPorteArma(boolean PorteArma) {
+        this.PorteArma = PorteArma;
+    }
+    
+    public boolean getPorteArma(){
+    	return PorteArma;
+    	
+    }
+    
+    //Full time = true    //PartTime= false
+    
+    public void setHorarioFulltime(boolean HorarioFulltime) {
+        this.HorarioFulltime = HorarioFulltime;
+    }
+    
+    public boolean getHorarioFullTime(){
+    	return HorarioFulltime;
+    }
+    
+    public String getCategoria() {
+        return Categoria;
+    }
+
+    public void setCategoria(String Categoria) {
+        this.Categoria = Categoria;
+    }
+    
+    public void setContratacionDeServicios(ContratacionDeServicios servicio){
+    	this.servicio = servicio;
+    }
+    
+    public ContratacionDeServicios getServicio(){
+    	return servicio;
+    }
+    
+}

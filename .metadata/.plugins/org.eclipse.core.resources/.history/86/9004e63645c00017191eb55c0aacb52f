@@ -1,0 +1,129 @@
+package security_master;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.border.EmptyBorder;
+
+import Conexiones.Conexion2;
+import net.proteanit.sql.DbUtils;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.sql.*;
+import javax.swing.*;
+public class Ver_Empleados extends JFrame {
+
+	private JPanel contentPane;
+	private JTable table;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Ver_Empleados frame = new Ver_Empleados();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public Ver_Empleados() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1144, 554);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(29, 55, 1072, 433);
+		contentPane.add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		
+		JButton btnCargarTabla = new JButton("Actualizar");
+		btnCargarTabla.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+		
+
+				/* conecta la base de datos */
+				
+				Conexion2 llamada=new Conexion2();
+
+				   
+	             llamada.getConnection();
+	       
+	 
+				
+					
+				Connection pruebaCn=Conexion2.getConnection();
+				
+				
+				/* conecta la base de datos */
+				
+				if (pruebaCn!=null) {
+					
+					
+					JOptionPane.showMessageDialog(null, "Conexion con la Base de datos exitosa!");
+				
+					java.sql.Statement stm = null;
+					try {
+						stm = pruebaCn.createStatement();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+					
+					try{
+				
+			
+					String query="select * from Empleados";
+					   PreparedStatement pst=pruebaCn.prepareStatement(query);
+					   ResultSet rs=pst.executeQuery();
+					   
+					   
+					   table.setModel(DbUtils.resultSetToTableModel(rs));
+					   
+					   
+				} catch (Exception e) {
+					e.printStackTrace();
+				
+				}
+				
+				
+				
+				
+				
+				
+				
+				
+					
+				
+				
+				
+				
+				
+					}
+				
+				
+				
+				
+				
+			}
+		});
+		btnCargarTabla.setBounds(397, 11, 215, 23);
+		contentPane.add(btnCargarTabla);
+	}
+}
